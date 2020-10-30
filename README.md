@@ -1,12 +1,12 @@
 # Element Remover
 
 Element Remover allows you to remove unwanted HTML elements while you are browsing the internet.
-I often found myself removing ads, chat boxes, etc by manually deleting elements in the dev tools.
-This process became tedious so I created a script to do the work for me.
+I often find myself removing ads, chat boxes, etc. by manually deleting elements in the dev tools.
+This process became tedious so I created a script to do the work for me 😎
 
 <div style="text-align:center"><img src="demo.gif" height="600" /></div>
 
-## Setup guide
+## How to setup
 1. Create a bookmark on your browser
 2. In the URL of the bookmark, copy and paste the script below
 ```
