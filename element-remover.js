@@ -1,4 +1,4 @@
-(function () {
+(function elementRemover() {
   console.log('Created by https://github.com/joshua0308');
 
   /**
