@@ -6,15 +6,23 @@ This process became tedious so I created a script to do the work for me 😎
 
 <div style="text-align:center"><img src="demo.gif" height="600" /></div>
 
-## How to setup
-1. Create a bookmark on your browser
-2. In the URL of the bookmark, copy and paste the script below
+## Setup guide
+### Chrome
+1. Create a bookmark on your browser (shortcut: CMD + d)
+2. Click on "More..." on the bottom left corner
+3. Give it a name that is easily identifiable (e.g. Element Remover)
+4. For the URL, copy and paste the script below
 ```
-javascript:!function(){console.log("Created by https://github.com/joshua0308");let t;const e=function(t){const e=document.createElement("div");return document.body.appendChild(e),e.style.position="absolute",e.style.background=t,e.style.zIndex="998",e}("rgba(255, 0, 0, 0.3)");const n="rgba(153, 235, 255, 0.5)",o=100;let i,l,c=1,s=0;function u(t){if(((l=t.clientX)-i)*c>o){if(c*=-1,(s+=1)>2){e.remove(),document.removeEventListener("mousemove",d);const t=function(t){const e=document.createElement("div");return e.style.position="absolute",e.style.background=t,e.style.zIndex="999",document.body.appendChild(e),e.style.width="100%",e.style.height="100%",e.style.top="0px",e.style.left="0px",e}(n);setTimeout(()=>{t.remove()},250)}}else s=0;i=l}const d=function(t,e){let n=0;return function(...o){const i=(new Date).getTime();if(!(i-n<t))return n=i,e(...o)}}(100,function(n){!function(n){let o;if(o=n.target===e?document.elementsFromPoint(n.clientX,n.clientY)[1]:n.target,t===o)return;t=o;const i=o.getBoundingClientRect(),l=i.height,c=i.width;e.style.width=c+10+"px",e.style.height=l+10+"px",e.style.top=i.top+window.scrollY-5+"px",e.style.left=i.left+window.scrollX-5+"px"}(n),u(n)});document.addEventListener("mousemove",d),document.addEventListener("click",function(n){let o;o=n.target===e?document.elementsFromPoint(n.clientX,n.clientY)[1]:n.target,t===o&&o.remove()})}();
+javascript:!function(){let e;const t=function(e){const t=document.createElement("div");return document.body.appendChild(t),t.style.position="absolute",t.style.background=e,t.style.zIndex="998",t}("rgba(255, 0, 0, 0.3)");function n(e){const n=e.getBoundingClientRect(),o=n.height,c=n.width;t.style.width=c+10+"px",t.style.height=o+10+"px",t.style.top=n.top+window.scrollY-5+"px",t.style.left=n.left+window.scrollX-5+"px"}function o(o){let c;c=o.target===t?document.elementsFromPoint(o.clientX,o.clientY)[1]:o.target,e===c&&(c.remove(),n(e=document.elementsFromPoint(o.clientX,o.clientY)[1]))}const c="rgba(153, 235, 255, 0.5)",i=100;let l,d,s=1,u=0;function r(){t.remove(),document.removeEventListener("mousemove",y),document.removeEventListener("click",o),document.removeEventListener("keydown",m);const e=function(e){const t=document.createElement("div");return t.style.position="absolute",t.style.background=e,t.style.zIndex="999",document.body.appendChild(t),t.style.width="100%",t.style.height=document.body.clientHeight+"px",t.style.top="0px",t.style.left="0px",t}(c);setTimeout(()=>{e.remove()},250)}function m(e){27===e.keyCode&&r()}const y=function(e,t){let n=0;return function(...o){const c=(new Date).getTime();if(!(c-n<e))return n=c,t(...o)}}(100,function(o){!function(o){let c;c=o.target===t?document.elementsFromPoint(o.clientX,o.clientY)[1]:o.target,e!==c&&(e=c,n(c))}(o),function(e){((d=e.clientX)-l)*s>i?(s*=-1,(u+=1)>2&&r()):u=0,l=d}(o)});document.addEventListener("mousemove",y),document.addEventListener("click",o),document.addEventListener("keydown",m),console.log("Created by https://github.com/joshua0308")}();
 ```
-3. That's it! You are good to go ✅
+5. Place the bookmark in `Bookmarks Bar` for ease of use
+6. That's it! You are good to go ✅
 
 ## How it works
-Simply click on the bookmark to run the script. This will allow you to pick HTML elements on your current tab.
-If you wish to remove an element, simply hover over the element and click. You can remove as many elements as you want.
-Once you are done, disable the script by shaking your mouse horizontally 4-5 times in quick succession until you see a lightblue blink on your screen.
+Click on the bookmark we just created. This will allow you to pick HTML elements on your current tab.
+Hover over to an element you wish to remove and click. The highlighted element will be deleted. You can remove as many elements as you want.
+Once you are done, you can disable the script by either:
+1. shaking your mouse horizontally 4-5 times in quick succession
+2. pressing the escape key on your keyboard
+
+You will see a lightblue blink on your screen when the script is disabled.
