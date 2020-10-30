@@ -1,6 +1,4 @@
 (function elementRemover() {
-  console.log('Created by https://github.com/joshua0308');
-
   /**
    * UTILITY FUNCTIONS
    */
@@ -34,7 +32,7 @@
     element.style.zIndex = "999";
     document.body.appendChild(element);
     element.style.width = "100%";
-    element.style.height = "100%";
+    element.style.height = document.body.clientHeight + "px";
     element.style.top = "0px";
     element.style.left = "0px";
     return element;
@@ -57,14 +55,12 @@
       current_hovered_element = e.target;
     }
 
-    // if the same element is chosen, return early
     if (previous_hovered_element === current_hovered_element) return;
     previous_hovered_element = current_hovered_element;
 
     const target_offset = current_hovered_element.getBoundingClientRect();
     const target_height = target_offset.height;
     const target_width = target_offset.width;
-    // add a border around hover box
     const boxBorder = 5;
     highlight_box.style.width = target_width + boxBorder * 2 + "px";
     highlight_box.style.height = target_height + boxBorder * 2 + "px";
@@ -97,21 +93,31 @@
   let previous_x;
   let current_x;
 
-  function handleMouseMoveForDetectMouseShake(e) {
+  function removeElementRemover() {
+    highlight_box.remove();
+    document.removeEventListener("mousemove", throttledHandleMouseMove);
+    const alert_screen_box = createAlertScreenBox(alert_screen_box_color);
+
+    setTimeout(() => {
+      alert_screen_box.remove();
+    }, 250);
+  }
+
+  function handleEscKeyDown(e) {
+    if (e.keyCode === 27) {
+      removeElementRemover();
+      removeEventListener("keydown", handleEscKeyDown)
+    }
+  }
+
+  function handleMouseMoveForShakeDetector(e) {
     current_x = e.clientX;
     if ((current_x - previous_x) * direction > detect_threshold) {
       direction = direction * -1;
       counter += 1;
 
       if (counter > 2) {
-        highlight_box.remove();
-        document.removeEventListener('mousemove', throttledHandleMouseMove);
-        const alert_screen_box = createAlertScreenBox(alert_screen_box_color);
-
-        setTimeout(() => {
-          alert_screen_box.remove();
-
-        }, 250);
+        removeElementRemover();
       }
     } else {
       counter = 0;
@@ -125,7 +131,7 @@
    */
   function combinedHandleMouseMove(e) {
     handleMouseMoveForElementRemover(e);
-    handleMouseMoveForDetectMouseShake(e);
+    handleMouseMoveForShakeDetector(e);
   }
 
   /**
@@ -135,5 +141,8 @@
   const throttledHandleMouseMove = throttled(mouse_move_throttle_time, combinedHandleMouseMove);
 
   document.addEventListener("mousemove", throttledHandleMouseMove)
-  document.addEventListener('click', handleMouseClick)
+  document.addEventListener("click", handleMouseClick)
+  document.addEventListener("keydown", handleEscKeyDown)
+
+  console.log("Created by https://github.com/joshua0308");
 })()
