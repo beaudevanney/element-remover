@@ -105,6 +105,8 @@
     highlight_box.remove();
     document.removeEventListener("mousemove", throttledHandleMouseMove);
     document.removeEventListener("click", removeElementWhenClicked);
+    document.removeEventListener("keydown", handleEscKeyDown);
+
     const alert_screen_box = createAlertScreenBox(alert_screen_box_color);
 
     setTimeout(() => {
@@ -115,7 +117,6 @@
   function handleEscKeyDown(e) {
     if (e.keyCode === 27) {
       deactivateElementRemover();
-      removeEventListener("keydown", handleEscKeyDown)
     }
   }
 
