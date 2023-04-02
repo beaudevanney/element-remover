@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Element Remover",
+  "version": "1.0",
+  "description": "Remove elements from a webpage by clicking on them.",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "element-remover.js"
+      ]
+    }
+  ]
+}
