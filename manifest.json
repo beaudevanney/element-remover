@@ -1,16 +1,26 @@
 {
-  "manifest_version": 2,
   "name": "Element Remover",
   "version": "1.0",
   "description": "Remove elements from a webpage by clicking on them.",
+  "manifest_version": 2,
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "browser_action": {
+    "default_title": "Element Remover",
+    "default_icon": "icon48.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "activeTab"
+  ],
   "content_scripts": [
     {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "element-remover.js"
-      ]
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
     }
   ]
 }
